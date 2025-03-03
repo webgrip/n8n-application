@@ -1,0 +1,82 @@
+services:
+  n8n:
+    image: docker.n8n.io/n8nio/n8n:1.81.2
+    container_name: n8n
+    restart: always
+    ports:
+      - "127.0.0.1:5678:5678"
+    labels:
+      - "traefik.enable=true"
+
+      # -------------------------------
+      # 1) Router for HTTP (port 80)
+      # -------------------------------
+      - "traefik.http.routers.n8n.entrypoints=web"
+      - "traefik.http.routers.n8n.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
+      # This middleware redirects to HTTPS
+      - "traefik.http.routers.n8n.middlewares=redirect-to-https"
+
+      # Define the middleware that redirects HTTP -> HTTPS
+      - "traefik.http.middlewares.redirect-to-https.redirectscheme.scheme=https"
+
+      # --------------------------------
+      # 2) Router for HTTPS (port 443)
+      # --------------------------------
+      - "traefik.http.routers.n8n-secure.entrypoints=websecure"
+      - "traefik.http.routers.n8n-secure.rule=Host(`${SUBDOMAIN}.${DOMAIN_NAME}`)"
+      - "traefik.http.routers.n8n-secure.tls=true"
+
+      # Configure certs (the main domain + wildcard SAN)
+      - "traefik.http.routers.n8n-secure.tls.domains[0].main=${SUBDOMAIN}.${DOMAIN_NAME}"
+      - "traefik.http.routers.n8n-secure.tls.domains[0].sans=*.${DOMAIN_NAME}"
+
+      # Attach this router to the 'n8n' service
+      - "traefik.http.routers.n8n-secure.service=n8n@docker"
+
+      # --------------------------------
+      # 3) Service definition for n8n
+      # --------------------------------
+      - "traefik.http.services.n8n.loadbalancer.server.scheme=http"
+      - "traefik.http.services.n8n.loadbalancer.server.port=5678"
+
+    environment:
+      - N8N_PROTOCOL=http
+      - N8N_LISTEN_ADDRESS=0.0.0.0
+      - N8N_PORT=5678
+      - N8N_HOST=${SUBDOMAIN}.${DOMAIN_NAME}
+      - N8N_PATH=/
+      - N8N_LOG_LEVEL=debug
+      - N8N_LOG_OUTPUT=console,file
+      - N8N_LOG_FILE_LOCATION=/home/node/.n8n/logs/n8n.log
+      - N8N_METRICS=true
+      - N8N_RUNNERS_ENABLED=true
+      - N8N_PERSONALIZATION_ENABLED=true
+      - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
+      - N8N_TEMPLATES_ENABLED=true
+      - N8N_HIRING_BANNER_ENABLED=false
+      - QUEUE_HEALTH_CHECK_ACTIVE=true
+      - NODE_ENV=production
+      - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
+      - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+    volumes:
+      - n8n_data:/home/node/.n8n
+
+  n8n-mkcert:
+    container_name: n8n-mkcert
+    image: webgrip/traefik-local-development-mkcert:latest
+    pull_policy: always
+    volumes:
+      - ~/.config/mkcert:/root/.local/share/mkcert:ro
+      - certificate-data:/certificate-data:rw
+    entrypoint: [ "/app/entrypoint.sh", "${DOMAIN_NAME}", "${SUBDOMAIN}.${DOMAIN_NAME}" ]
+
+volumes:
+  n8n_data:
+    external: true
+  certificate-data:
+    external: true
+
+networks:
+  default:
+    external: true
+    name: webgrip
