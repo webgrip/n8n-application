@@ -1,7 +1,9 @@
 services:
   n8n:
-    image: docker.n8n.io/n8nio/n8n:1.81.2
     container_name: n8n
+    build:
+      context: .
+      dockerfile: ops/docker/Dockerfile
     restart: always
     ports:
       - "127.0.0.1:5678:5678"
@@ -50,7 +52,7 @@ services:
       - N8N_LOG_FILE_LOCATION=/home/node/.n8n/logs/n8n.log
       - N8N_METRICS=true
       - N8N_RUNNERS_ENABLED=true
-      - N8N_PERSONALIZATION_ENABLED=true
+      - N8N_PERSONALIZATION_ENABLED=false
       - N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS=true
       - N8N_TEMPLATES_ENABLED=true
       - N8N_HIRING_BANNER_ENABLED=false
@@ -58,8 +60,23 @@ services:
       - NODE_ENV=production
       - WEBHOOK_URL=https://${SUBDOMAIN}.${DOMAIN_NAME}/
       - GENERIC_TIMEZONE=${GENERIC_TIMEZONE}
+
+      # Database
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=postgres
+      - DB_POSTGRESDB_PORT=5432
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB:-n8n_db}
+      - DB_POSTGRESDB_USER=${POSTGRES_USER:-n8n}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD:-n8n_password}
+
+      # Extra Credentials
+      - TELEGRAM_BOT_TOKEN=${TELEGRAM_BOT_TOKEN:-your_telegram_bot_token}
+      - BASEROW_API_TOKEN=${BASEROW_API_TOKEN:-your_baserow_token}
+      - BASEROW_BASE_URL=${BASEROW_BASE_URL:-https://api.baserow.io}
     volumes:
       - n8n_data:/home/node/.n8n
+      - ./n8n-templates:/home/node/.n8n/templates
+      - ./workflows:/home/node/.n8n/workflows
 
   n8n-mkcert:
     container_name: n8n-mkcert
@@ -70,9 +87,20 @@ services:
       - certificate-data:/certificate-data:rw
     entrypoint: [ "/app/entrypoint.sh", "${DOMAIN_NAME}", "${SUBDOMAIN}.${DOMAIN_NAME}" ]
 
+  postgres:
+    image: postgres:17.4-alpine
+    container_name: n8n-postgres
+    restart: always
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER:-n8n}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD:-n8n_password}
+      - POSTGRES_DB=${POSTGRES_DB:-n8n_db}
+    volumes:
+      - n8n-postgres-data:/var/lib/postgresql/data
+
 volumes:
   n8n_data:
-    external: true
+  n8n-postgres-data:
   certificate-data:
     external: true
 
