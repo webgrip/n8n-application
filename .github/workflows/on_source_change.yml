@@ -14,29 +14,29 @@ on:
       - '.github/workflows/on_source_change.yml'
       - '.github/workflows/release.yml'
 jobs:
+  semantic-release:
+    name: 'Semantic Release'
+    uses: webgrip/workflows/.github/workflows/semantic-release.yml@main
+
   build:
     name: 'Build'
+    needs: [ semantic-release ]
+    if: always() && needs.semantic-release.result == 'success'
     uses: webgrip/workflows/.github/workflows/docker-build-and-push.yml@main
     with:
       docker-context: '.'
       docker-file: './ops/docker/n8n/Dockerfile'
       docker-tags: |
         webgrip/n8n-application:latest
-        webgrip/n8n-application:${{ github.sha }}
+        webgrip/n8n-application:${{ needs.semantic-release.outputs.version }}
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
 
-  semantic-release:
-    name: 'Semantic Release'
-    needs: [ build ]
-    if: always() && needs.build.result == 'success'
-    uses: webgrip/workflows/.github/workflows/semantic-release.yml@main
-
   helm-deploy:
     name: 'Deploy'
-    needs: [ semantic-release ]
-    if: always() && needs.semantic-release.result == 'success'
+    needs: [ build ]
+    if: always() && needs.build.result == 'success'
     uses: webgrip/workflows/.github/workflows/helm-deploy.yml@main
     secrets:
       DIGITAL_OCEAN_API_KEY: ${{ secrets.DIGITAL_OCEAN_API_KEY }}
