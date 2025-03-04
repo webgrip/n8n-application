@@ -18,8 +18,8 @@ jobs:
     name: 'Docker Build and Push'
     uses: webgrip/workflows/.github/workflows/docker-build-and-push.yml@main
     with:
-      docker-context: './ops/docker/n8n'
-      docker-file: 'Dockerfile'
+      docker-context: '.'
+      docker-file: './ops/docker/n8n/Dockerfile'
       docker-tags: |
         webgrip/n8n-application:latest
         webgrip/n8n-application:${{ github.sha }}
