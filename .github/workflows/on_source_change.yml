@@ -23,6 +23,9 @@ jobs:
       docker-tags: |
         webgrip/n8n-application:latest
         webgrip/n8n-application:${{ github.sha }}
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
 
   semantic-release:
     name: 'Semantic Release'
