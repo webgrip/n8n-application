@@ -1,0 +1,42 @@
+name: '[Workflow] On Source Change'
+
+concurrency:
+  group: push-${{ github.branch }}
+
+on:
+  push:
+    branches:
+      - 'main'
+    paths:
+      - 'ops/**'
+      - 'src/**'
+      - '.releaserc.json'
+      - '.github/workflows/on_source_change.yml'
+      - '.github/workflows/release.yml'
+jobs:
+  build:
+    name: 'Docker Build and Push'
+    uses: webgrip/workflows/.github/workflows/docker-build-and-push.yml@main
+    with:
+      docker-context: './ops/docker/n8n'
+      docker-file: 'Dockerfile'
+      docker-tags: |
+        webgrip/n8n-application:latest
+        webgrip/n8n-application:${{ github.sha }}
+
+  semantic-release:
+    name: 'Semantic Release'
+    needs: [ build ]
+    if: always() && needs.build.result == 'success'
+    uses: webgrip/workflows/.github/workflows/semantic-release.yml@main
+
+  helm-deploy-matrix:
+    name: 'Helm Deploy'
+    needs: [ semantic-release ]
+    if: always() && needs.semantic-release.result == 'success'
+    uses: webgrip/workflows/.github/workflows/helm-deploy.yml@main
+    secrets:
+      DIGITAL_OCEAN_API_KEY: ${{ secrets.DIGITAL_OCEAN_API_KEY }}
+    with:
+      environment: 'staging'
+      path: './ops/helm/n8n-application-nginx'

@@ -1,0 +1,73 @@
+apiVersion: backstage.io/v1alpha1
+kind: System
+metadata:
+  name: n8n-application-system
+  namespace: webgrip
+  title: N8N Application System
+  description: |
+    n8n is a free and open workflow automation tool that enables you to connect your favorite apps, services, and APIs.
+  labels:
+    tier: "3"
+  annotations:
+    github.com/project-slug: webgrip/n8n-application
+    backstage.io/adr-location: docs/adrs
+    backstage.io/techdocs-ref: dir:./docs/techdocs
+    simpleicons.org/icon-slug: n8n
+  tags:
+    - n8n
+    - nodejs
+    - automation
+  links:
+    - url: https://n8n.webgrip.test/
+      title: Development URL
+      icon: dashboard
+      type: website
+    - url: https://n8n.webgrip.nl/
+      title: Production URL
+      icon: dashboard
+      type: website
+    - url: https://github.com/webgrip/n8n-application
+      title: n8n Source Code
+      icon: github
+      type: source
+spec:
+  owner: group:webgrip/infrastructure
+  domain: webgrip/operations-domain
+  type: product
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: n8n-application
+  namespace: webgrip
+  title: n8n
+  description: |
+    n8n is a free and open workflow automation tool that enables you to connect your favorite apps, services, and APIs.
+  labels:
+    tier: "3"
+  annotations:
+    github.com/project-slug: webgrip/n8n-application
+    backstage.io/techdocs-ref: dir:./docs/techdocs
+    simpleicons.org/icon-slug: n8n
+  tags:
+    - n8n
+    - nodejs
+    - automation
+  links:
+    - url: https://n8n.webgrip.test/
+      title: Development URL
+      icon: dashboard
+      type: website
+    - url: https://n8n.webgrip.nl/
+      title: Production URL
+      icon: dashboard
+      type: website
+    - url: https://github.com/webgrip/n8n-application
+      title: n8n Source Code
+      icon: github
+      type: source
+spec:
+  type: service
+  lifecycle: development
+  owner: group:webgrip/infrastructure
+  system: n8n-application-system
