@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/webgrip/n8n-application/compare/1.0.2...1.0.3) (2025-03-04)
+
+
+### Bug Fixes
+
+* **certificate:** Move to the nginx ClusterIssuer ([a87db4e](https://github.com/webgrip/n8n-application/commit/a87db4e572fd06aa910865257ceae26f888d168d))
+
 ## [1.0.2](https://github.com/webgrip/n8n-application/compare/1.0.1...1.0.2) (2025-03-04)
 
 
