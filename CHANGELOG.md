@@ -1,3 +1,10 @@
+## [1.0.4](https://github.com/webgrip/n8n-application/compare/1.0.3...1.0.4) (2025-03-04)
+
+
+### Bug Fixes
+
+* **certificate:** Don't redirect right away ([618a53a](https://github.com/webgrip/n8n-application/commit/618a53a94c573e318632ad5de0f1df74feaeeaf9))
+
 ## [1.0.3](https://github.com/webgrip/n8n-application/compare/1.0.2...1.0.3) (2025-03-04)
 
 
