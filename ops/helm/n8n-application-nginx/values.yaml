@@ -14,7 +14,7 @@ n8n:
   ingress:
     enabled: true
     annotations:
-      cert-manager.io/issuer: letsencrypt-nginx
+      cert-manager.io/cluster-issuer: letsencrypt-nginx
       nginx.ingress.kubernetes.io/proxy-body-size: "0"
       nginx.ingress.kubernetes.io/proxy-buffering: "off"
       nginx.ingress.kubernetes.io/proxy-request-buffering: "off"
