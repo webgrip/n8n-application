@@ -1,8 +1,8 @@
 apiVersion: v2
 name: n8n-application-nginx
-description: A Helm chart to deploy the GitHub Actions Runner Scale Set Controller
+description: "Helm Chart for deploying n8n on Kubernetes, a fair-code workflow automation platform with native AI capabilities for technical teams. Easily automate tasks across different services."
 type: application
-version: 1.0.0
+version: 1.0.1
 appVersion: "1.81.4"
 dependencies:
   - name: n8n

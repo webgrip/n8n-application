@@ -26,9 +26,9 @@ n8n:
           - /
 
     tls:
-      secretName: letsencrypt-nginx-n8n-application
-      hosts:
-        - *hostname
+      - secretName: letsencrypt-nginx-n8n-application
+        hosts:
+          - *hostname
   main:
 #    service:
 #      type: ClusterIP
