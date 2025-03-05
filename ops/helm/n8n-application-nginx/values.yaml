@@ -33,12 +33,12 @@ n8n:
 #      type: ClusterIP
 #      port: 5678
     config:
+      webhook_url: *url
       n8n:
 #        protocol: http
 #        listenAddress: 0.0.0.0
 #        port: 5678
         host: *hostname
-        webhook_url: *url
         log_level: debug
         log_output: console,file
         log_file_location: /home/node/.n8n/logs/n8n.log
