@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/webgrip/n8n-application/compare/1.1.0...1.2.0) (2025-03-05)
+
+
+### Features
+
+* rename step to release ([c1ac939](https://github.com/webgrip/n8n-application/commit/c1ac939ee04252dbafe75271dbcde45b410b7b46))
+
 # [1.1.0](https://github.com/webgrip/n8n-application/compare/1.0.5...1.1.0) (2025-03-05)
 
 
