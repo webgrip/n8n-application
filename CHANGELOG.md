@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/webgrip/n8n-application/compare/1.4.1...1.4.2) (2025-03-05)
+
+
+### Bug Fixes
+
+* **import:** Put workflows and credentials in a different directory again, just like I did for the the docker-entrypoint problem ([73997f5](https://github.com/webgrip/n8n-application/commit/73997f55c8eae534033920522104fdc086e0ce08))
+
 ## [1.4.1](https://github.com/webgrip/n8n-application/compare/1.4.0...1.4.1) (2025-03-05)
 
 
