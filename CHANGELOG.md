@@ -1,3 +1,10 @@
+## [1.4.4](https://github.com/webgrip/n8n-application/compare/1.4.3...1.4.4) (2025-03-05)
+
+
+### Bug Fixes
+
+* **docker:** Fix permissions ([2bca530](https://github.com/webgrip/n8n-application/commit/2bca530d73f04ad5d36ded75eb41f2146ccf3d9d))
+
 ## [1.4.3](https://github.com/webgrip/n8n-application/compare/1.4.2...1.4.3) (2025-03-05)
 
 
