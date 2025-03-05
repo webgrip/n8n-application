@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/webgrip/n8n-application/compare/1.2.5...1.3.0) (2025-03-05)
+
+
+### Features
+
+* **helm:** Added postgresql to helm ([500a9d1](https://github.com/webgrip/n8n-application/commit/500a9d1720dc6979ee97d07741e421c4b410f021))
+
 ## [1.2.5](https://github.com/webgrip/n8n-application/compare/1.2.4...1.2.5) (2025-03-05)
 
 
