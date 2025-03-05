@@ -1,28 +1,29 @@
-# Use your desired base n8n image.
-# If you have a private registry, keep that URL; otherwise use Docker Hub's official:
-FROM docker.n8n.io/n8nio/n8n:1.81.4
+# Use the official n8n image
+FROM docker.n8n.io/n8nio/n8n:1.82.1
 
-# Become root temporarily to install packages and adjust files
+# Switch to root to install packages and configure files
 USER root
 
-# Example: Install any needed utilities
+# Install utilities (example: jq)
 RUN apk add --no-cache jq
 
-# Copy your workflows and credentials into /home/node/.n8n
-COPY ./src/workflows /workflows
-COPY ./src/credentials /credentials
+# Define fixed directories for scripts, workflows, and credentials
+WORKDIR /docker-scripts
 
-# Adjust ownership so the `node` user can read/write
-RUN chown -R node:node /home/node/.n8n
+# Copy entrypoint scripts and ensure proper permissions
+COPY ./ops/docker/n8n/scripts/ .
+RUN chmod +x docker-entrypoint.sh && chown -R node:node /docker-scripts
 
-# Copy entrypoint scripts into a directory that won't get overwritten by volume mounts
-COPY ./ops/docker/n8n/scripts /docker-scripts
+# Copy workflows and credentials into dedicated directories
+WORKDIR /data
+COPY ./src/workflows /data/workflows
+COPY ./src/credentials /data/credentials
 
-# Make scripts executable & adjust permissions
-RUN chmod +x /docker-scripts/*.sh && chown -R node:node /docker-scripts
+# Ensure node user has correct ownership
+RUN chown -R node:node /data
 
-# Switch back to the non-root user
+# Switch back to node user for security
 USER node
 
-# Finally, set the container ENTRYPOINT to your script
+# Set entrypoint script
 ENTRYPOINT ["/docker-scripts/docker-entrypoint.sh"]

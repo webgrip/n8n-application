@@ -4,7 +4,7 @@ services:
     build:
       context: .
       dockerfile: ops/docker/n8n/Dockerfile
-      target: production
+#      target: production
     restart: always
     depends_on:
       postgres:

@@ -1,34 +1,44 @@
 #!/bin/sh
 set -e
 
-# Run custom credential setup script
-if [ -f "/home/node/.n8n/scripts/import-credentials.sh" ]; then
+# Define script directory
+SCRIPT_DIR="/docker-scripts"
+
+# Run credential import script
+if [ -f "$SCRIPT_DIR/import-credentials.sh" ]; then
     echo "Running import-credentials.sh..."
-    . /home/node/.n8n/scripts/import-credentials.sh
+    sh "$SCRIPT_DIR/import-credentials.sh"
 else
     echo "import-credentials.sh not found, skipping..."
 fi
 
 # Run workflow import script
-if [ -f "/home/node/.n8n/scripts/import-workflows.sh" ]; then
+if [ -f "$SCRIPT_DIR/import-workflows.sh" ]; then
     echo "Running import-workflows.sh..."
-    . /home/node/.n8n/scripts/import-workflows.sh
+    sh "$SCRIPT_DIR/import-workflows.sh"
 else
     echo "import-workflows.sh not found, skipping..."
 fi
 
 # Handle custom certificates if present
 if [ -d /opt/custom-certificates ]; then
-  echo "Trusting custom certificates from /opt/custom-certificates."
-  export NODE_OPTIONS=--use-openssl-ca $NODE_OPTIONS
-  export SSL_CERT_DIR=/opt/custom-certificates
-  c_rehash /opt/custom-certificates
+    echo "Trusting custom certificates from /opt/custom-certificates."
+    export NODE_OPTIONS="--use-openssl-ca $NODE_OPTIONS"
+    export SSL_CERT_DIR="/opt/custom-certificates"
+
+    # Check if `c_rehash` exists before running
+    if command -v c_rehash >/dev/null 2>&1; then
+        c_rehash /opt/custom-certificates
+    else
+        echo "Warning: c_rehash not found. Skipping certificate rehashing."
+    fi
 fi
 
+# Start n8n with or without additional arguments
 if [ "$#" -gt 0 ]; then
-  # Got started with arguments
-  exec n8n "$@"
+    echo "Starting n8n with arguments: $@"
+    exec n8n "$@"
 else
-  # Got started without arguments
-  exec n8n
+    echo "Starting n8n..."
+    exec n8n
 fi
