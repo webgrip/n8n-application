@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/webgrip/n8n-application/compare/1.0.4...1.0.5) (2025-03-05)
+
+
+### Bug Fixes
+
+* **application:** Set WEBHOOK_URL env instead of N8N_WEBHOOK_URL ([f1d9d85](https://github.com/webgrip/n8n-application/commit/f1d9d85c3fc0b562a071d7753e9283f076732811))
+
 ## [1.0.4](https://github.com/webgrip/n8n-application/compare/1.0.3...1.0.4) (2025-03-04)
 
 
