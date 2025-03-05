@@ -20,14 +20,14 @@ jobs:
   build:
     name: 'Build'
     needs: [ release ]
-    if: always() && needs.semantic-release.result == 'success'
+    if: always() && needs.release.result == 'success'
     uses: webgrip/workflows/.github/workflows/docker-build-and-push.yml@main
     with:
       docker-context: '.'
       docker-file: './ops/docker/n8n/Dockerfile'
       docker-tags: |
         webgrip/n8n-application:latest
-        webgrip/n8n-application:${{ needs.semantic-release.outputs.version }}
+        webgrip/n8n-application:${{ needs.release.outputs.version }}
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
