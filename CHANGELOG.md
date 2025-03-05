@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/webgrip/n8n-application/compare/1.2.1...1.2.2) (2025-03-05)
+
+
+### Bug Fixes
+
+* Redeploy with new workflow ([408d177](https://github.com/webgrip/n8n-application/commit/408d17742912fe8fc3ba312bb62630ecd072a637))
+
 ## [1.2.1](https://github.com/webgrip/n8n-application/compare/1.2.0...1.2.1) (2025-03-05)
 
 
