@@ -38,7 +38,7 @@
       "name": "OpenAI Chat Model",
       "credentials": {
         "openAiApi": {
-          "id": "BP9v81AwJlpYGStD",
+          "id": "XRm5oslNLyGlEVPy",
           "name": "OpenAi account"
         }
       }
@@ -225,8 +225,8 @@
       "webhookId": "99eab1a0-569d-4f0f-a49e-578a02abfe63",
       "credentials": {
         "telegramApi": {
-          "id": "9jQWan3cOz3tE62s",
-          "name": "Telegram account 2"
+          "id": "AOYRn4u6vO2a9DD8",
+          "name": "Telegram account"
         }
       }
     },
@@ -338,8 +338,8 @@
       "webhookId": "5dced4b9-5066-4036-a4d4-14fc07edd53c",
       "credentials": {
         "telegramApi": {
-          "id": "9jQWan3cOz3tE62s",
-          "name": "Telegram account 2"
+          "id": "AOYRn4u6vO2a9DD8",
+          "name": "Telegram account"
         }
       }
     },
@@ -359,8 +359,8 @@
       "webhookId": "83bb7385-33f6-4105-8294-1a91c0ebbee5",
       "credentials": {
         "telegramApi": {
-          "id": "9jQWan3cOz3tE62s",
-          "name": "Telegram account 2"
+          "id": "AOYRn4u6vO2a9DD8",
+          "name": "Telegram account"
         }
       }
     },
@@ -380,7 +380,7 @@
       ],
       "credentials": {
         "openAiApi": {
-          "id": "BP9v81AwJlpYGStD",
+          "id": "XRm5oslNLyGlEVPy",
           "name": "OpenAi account"
         }
       }
