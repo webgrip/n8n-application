@@ -1,3 +1,12 @@
+## [1.4.1](https://github.com/webgrip/n8n-application/compare/1.4.0...1.4.1) (2025-03-05)
+
+
+### Bug Fixes
+
+* **postgres:** Actually use postgresql in n8n ([a31bd5b](https://github.com/webgrip/n8n-application/commit/a31bd5b8d47dbbafaf5749d19b8a79302b687664))
+* **postgres:** Forego service monitor ([4421163](https://github.com/webgrip/n8n-application/commit/4421163c4e751e1cd353975ce54edf4f956ffe06))
+* **postgres:** Set the postgres username to the auth itself ([bc89b6e](https://github.com/webgrip/n8n-application/commit/bc89b6e6c24fd6d4595348221be0bb7c84f9dd84))
+
 # [1.4.0](https://github.com/webgrip/n8n-application/compare/1.3.0...1.4.0) (2025-03-05)
 
 
