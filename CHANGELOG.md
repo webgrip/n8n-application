@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/webgrip/n8n-application/compare/1.0.5...1.1.0) (2025-03-05)
+
+
+### Features
+
+* import credentials and workflows based on environment variables (secrets) ([024999c](https://github.com/webgrip/n8n-application/commit/024999caad1e8aedacdf7a60d03ae6f30a077f02))
+
 ## [1.0.5](https://github.com/webgrip/n8n-application/compare/1.0.4...1.0.5) (2025-03-05)
 
 
