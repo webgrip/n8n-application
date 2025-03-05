@@ -20,7 +20,7 @@ jobs:
   build:
     name: 'Build'
     needs: [ release ]
-    if: always() && needs.release.result == 'success' && release.outputs.version != ''
+    if: always() && needs.release.result == 'success' && needs.release.outputs.version != ''
     uses: webgrip/workflows/.github/workflows/docker-build-and-push.yml@main
     with:
       docker-context: '.'
