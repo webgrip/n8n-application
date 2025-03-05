@@ -1,3 +1,15 @@
+# [1.4.0](https://github.com/webgrip/n8n-application/compare/1.3.0...1.4.0) (2025-03-05)
+
+
+### Bug Fixes
+
+* **workflows:** Don't trigger new application release when postgresql ops is changed ([84542db](https://github.com/webgrip/n8n-application/commit/84542dbfc618396d60ba86123522ad72fb82c906))
+
+
+### Features
+
+* **helm:** PostgreSQL replication -> standalone ([dd64a0c](https://github.com/webgrip/n8n-application/commit/dd64a0c52a3a89bbcf83f4ad4a6bf6364d8d3e10))
+
 # [1.3.0](https://github.com/webgrip/n8n-application/compare/1.2.5...1.3.0) (2025-03-05)
 
 
