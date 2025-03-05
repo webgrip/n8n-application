@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/webgrip/n8n-application/compare/1.2.0...1.2.1) (2025-03-05)
+
+
+### Bug Fixes
+
+* Added some env stuff, and update so that we deploy a specific tag ([9935c53](https://github.com/webgrip/n8n-application/commit/9935c5375449843e4fbca37a67d54524c4aa01ef))
+
 # [1.2.0](https://github.com/webgrip/n8n-application/compare/1.1.0...1.2.0) (2025-03-05)
 
 
