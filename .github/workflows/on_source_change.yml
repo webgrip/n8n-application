@@ -42,3 +42,4 @@ jobs:
     with:
       environment: 'staging'
       path: './ops/helm/n8n-application-nginx'
+      tag: ${{ needs.release.outputs.version }}

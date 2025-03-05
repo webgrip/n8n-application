@@ -6,9 +6,6 @@ echo "Running import-credentials.sh..."
 # Ensure the credentials directory exists
 mkdir -p /home/node/.n8n/credentials
 
-# Debug: Check what files actually exist before running jq
-ls -la /home/node/.n8n/credentials/
-
 # Ensure correct filenames are used
 if [ -f "/home/node/.n8n/credentials/openapi.json" ]; then
     echo "Updating openapi.json..."

@@ -48,6 +48,7 @@ services:
     env_file:
       - .env
     environment:
+      - N8N_ENCRYPTION_KEY=${N8N_ENCRYPTION_KEY:-your_encryption_key}
       - N8N_PROTOCOL=http
       - N8N_LISTEN_ADDRESS=0.0.0.0
       - N8N_PORT=5678
