@@ -1,3 +1,10 @@
+## [1.2.4](https://github.com/webgrip/n8n-application/compare/1.2.3...1.2.4) (2025-03-05)
+
+
+### Bug Fixes
+
+* need release so I can get the output ([e039d66](https://github.com/webgrip/n8n-application/commit/e039d66b7588d2408d3a9c528e9c5c5a3bde62a6))
+
 ## [1.2.3](https://github.com/webgrip/n8n-application/compare/1.2.2...1.2.3) (2025-03-05)
 
 
