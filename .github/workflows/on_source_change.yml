@@ -9,6 +9,7 @@ on:
       - 'main'
     paths:
       - 'ops/**'
+      - '!ops/helm/n8n-application-postgresql/**'
       - 'src/**'
       - '.releaserc.json'
       - '.github/workflows/on_source_change.yml'
