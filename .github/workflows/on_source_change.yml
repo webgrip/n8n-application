@@ -34,7 +34,7 @@ jobs:
 
   deploy:
     name: 'Deploy'
-    needs: [ build ]
+    needs: [ release, build ]
     if: always() && needs.build.result == 'success'
     uses: webgrip/workflows/.github/workflows/helm-deploy.yml@main
     secrets:
