@@ -1,3 +1,11 @@
+## [1.2.5](https://github.com/webgrip/n8n-application/compare/1.2.4...1.2.5) (2025-03-05)
+
+
+### Bug Fixes
+
+* Add manual deploy action ([bf1cf6e](https://github.com/webgrip/n8n-application/commit/bf1cf6e17452c1070837fa21c1375d51e59ed092))
+* **docker:** Put the scripts into a directory NOT in /home/node/.n8n/*, because that is likely overwritten by the kubernetes pod with a volume mount ([fa561f7](https://github.com/webgrip/n8n-application/commit/fa561f79c72fb2010ea78b34f1d3a3d5252219aa))
+
 ## [1.2.4](https://github.com/webgrip/n8n-application/compare/1.2.3...1.2.4) (2025-03-05)
 
 
