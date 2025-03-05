@@ -1,3 +1,11 @@
+## [1.2.3](https://github.com/webgrip/n8n-application/compare/1.2.2...1.2.3) (2025-03-05)
+
+
+### Bug Fixes
+
+* Only build docker image when a new release was made ([bdd53a7](https://github.com/webgrip/n8n-application/commit/bdd53a7fa7d915666f9e4ae28d40f3d3dbd2d727))
+* Only build docker image when a new release was made ([65dcd73](https://github.com/webgrip/n8n-application/commit/65dcd73349b3a03079db183c85f32490550eb40c))
+
 ## [1.2.2](https://github.com/webgrip/n8n-application/compare/1.2.1...1.2.2) (2025-03-05)
 
 
