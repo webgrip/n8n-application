@@ -46,7 +46,13 @@ n8n:
         templates_enabled: true
         hiring_banner_enabled: false
       db:
-        type: sqlite
+        type: postgresdb
+        postgresdb:
+          host: n8n-application-postgresql.n8n-application.svc.cluster.local
+          port: "5432"
+          database: mydatabase
+          user: myuser
+
     secret:
       n8n:
         encryption_key: "your_encryption_key"
@@ -55,5 +61,5 @@ n8n:
       DB_POSTGRESDB_PASSWORD:
         valueFrom:
           secretKeyRef:
-            name: n8n-application-secret
-            key: n8n_secret1
+            name: postgresql-secret
+            key: password
