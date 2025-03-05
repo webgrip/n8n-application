@@ -1,0 +1,10 @@
+apiVersion: v2
+name: n8n-application-postgresql
+description: "Helm Chart for deploying postgresql on Kubernetes for n8n"
+type: application
+version: 1.0.0
+appVersion: "17.4.0"
+dependencies:
+  - name: postgresql
+    version: 16.4.16
+    repository: oci://registry-1.docker.io/bitnamicharts
