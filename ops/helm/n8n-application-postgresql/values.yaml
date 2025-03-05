@@ -30,6 +30,7 @@ postgresql:
 
   auth:
     enablePostgresUser: true
+    username: "myuser"
     existingSecret: "postgresql-secret"
     database: "mydatabase"
 
