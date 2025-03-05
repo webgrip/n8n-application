@@ -9,8 +9,8 @@ USER root
 RUN apk add --no-cache jq
 
 # Copy your workflows and credentials into /home/node/.n8n
-COPY ./src/workflows /home/node/.n8n/workflows
-COPY ./src/credentials /home/node/.n8n/credentials
+COPY ./src/workflows /workflows
+COPY ./src/credentials /credentials
 
 # Adjust ownership so the `node` user can read/write
 RUN chown -R node:node /home/node/.n8n
