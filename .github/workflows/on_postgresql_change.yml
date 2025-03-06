@@ -8,16 +8,30 @@ on:
     branches:
       - 'main'
     paths:
+      - 'ops/docker/postgres/**'
       - 'ops/helm/n8n-application-postgresql/**'
       - '.github/workflows/on_postgresql_change.yml'
 jobs:
+  build:
+    name: 'Build'
+    uses: webgrip/workflows/.github/workflows/docker-build-and-push.yml@main
+    with:
+      docker-context: '.'
+      docker-file: './ops/docker/postgres/Dockerfile'
+      docker-tags: |
+        webgrip/n8n-application-postgresql:latest
+        webgrip/n8n-application-postgresql:${{ github.sha }}
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+
   deploy:
     name: 'Deploy'
+    needs: [ build ]
     uses: webgrip/workflows/.github/workflows/helm-deploy.yml@main
     secrets:
       DIGITAL_OCEAN_API_KEY: ${{ secrets.DIGITAL_OCEAN_API_KEY }}
     with:
       environment: 'staging'
       path: './ops/helm/n8n-application-postgresql'
-
-
+      tag: ${{ github.sha }}

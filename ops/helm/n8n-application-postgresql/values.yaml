@@ -4,18 +4,12 @@ _shared:
 namespace: n8n-application
 
 postgresql:
-  # ======================================
-  # Global Storage
-  # ======================================
   global:
     storageClass: *storageClass
 
-  # ======================================
-  # PostgreSQL image
-  # ======================================
   image:
     registry: docker.io
-    repository: bitnami/postgresql
+    repository: webgrip/n8n-application-postgresql
     tag: "17.4.0"
 
   architecture: standalone
@@ -188,8 +182,8 @@ postgresql:
                     # We'll use the same Bitnami PostgreSQL image
                     # because it includes pg_dump. Alternatively,
                     # you could use another container with psql/pg_dump installed.
-                    image: "docker.io/bitnami/postgresql:17.4.0"
-                    imagePullPolicy: IfNotPresent
+                    image: "docker.io/webgrip/n8n-application-postgresql:latest"
+                    imagePullPolicy: Always
 
                     # We run "pg_dumpall" to a file, then "aws s3 cp"
                     # to push that file to DO Spaces.

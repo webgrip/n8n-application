@@ -9,10 +9,10 @@ on:
       - 'main'
     paths:
       - 'ops/**'
-      - '!ops/helm/n8n-application-postgresql/**'
       - 'src/**'
       - '.releaserc.json'
-      - '.github/workflows/on_source_change.yml'
+      - '!ops/helm/n8n-application-postgresql/**'
+      - '!ops/docker/postgres/**'
 jobs:
   release:
     name: 'Release'
