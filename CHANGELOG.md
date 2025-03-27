@@ -1,3 +1,10 @@
+## [1.5.1](https://github.com/webgrip/n8n-application/compare/1.5.0...1.5.1) (2025-03-27)
+
+
+### Bug Fixes
+
+* fix path ([fbb20b8](https://github.com/webgrip/n8n-application/commit/fbb20b87430789e3014af2d9fd9c74050c95f268))
+
 # [1.5.0](https://github.com/webgrip/n8n-application/compare/1.4.4...1.5.0) (2025-03-27)
 
 
