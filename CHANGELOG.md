@@ -1,3 +1,10 @@
+## [1.5.6](https://github.com/webgrip/n8n-application/compare/1.5.5...1.5.6) (2025-03-27)
+
+
+### Bug Fixes
+
+* **postgres:** removed persistence explicit-ness ([91b7023](https://github.com/webgrip/n8n-application/commit/91b70238b6d2f625657bfa3371e357ca0733318a))
+
 ## [1.5.5](https://github.com/webgrip/n8n-application/compare/1.5.4...1.5.5) (2025-03-27)
 
 
