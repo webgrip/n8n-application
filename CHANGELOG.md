@@ -1,3 +1,10 @@
+## [1.5.16](https://github.com/webgrip/n8n-application/compare/1.5.15...1.5.16) (2025-03-27)
+
+
+### Bug Fixes
+
+* Manually set the middleware for api and webhook to have no middleware ([9e78c7b](https://github.com/webgrip/n8n-application/commit/9e78c7b6074b43ac57bc0536e797ebeec4eeef90))
+
 ## [1.5.15](https://github.com/webgrip/n8n-application/compare/1.5.14...1.5.15) (2025-03-27)
 
 
