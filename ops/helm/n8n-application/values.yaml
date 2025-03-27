@@ -21,11 +21,11 @@ n8n:
       - host: *hostname
         paths:
           - /
-
     tls:
       - secretName: letsencrypt-n8n-application
         hosts:
           - *hostname
+
   main:
     config:
       webhook_url: *url
@@ -50,29 +50,23 @@ n8n:
           port: 5432
           database: n8n_db
           user: n8n
-#    secret:
-#      n8n:
-#        encryption_key: "your_encryption_key"
 
     extraEnv:
       N8N_ENCRYPTION_KEY:
         valueFrom:
           secretKeyRef:
-            name: n8n-application-secret
+            name: n8n-application-secrets
             key: n8n_encryption_key
       DB_POSTGRESDB_PASSWORD:
         valueFrom:
           secretKeyRef:
-            name: n8n-application-secret
+            name: n8n-application-secrets
             key: postgres_password
 
 postgresql:
-  global:
-    postgresql:
-      auth:
-        username: n8n
-        database: n8n_db
-        secretKeys:
-          userPasswordKey:
-            name: n8n-application-secrets
-            key: postgres_password
+  auth:
+    username: n8n
+    database: n8n_db
+    existingSecret: n8n-application-secrets
+    secretKeys:
+      userPasswordKey: postgres_password
