@@ -1,3 +1,10 @@
+## [1.5.9](https://github.com/webgrip/n8n-application/compare/1.5.8...1.5.9) (2025-03-27)
+
+
+### Bug Fixes
+
+* **secrets:** Try opening up api/v1 and webhook/ ([ac525f6](https://github.com/webgrip/n8n-application/commit/ac525f62b1890b25978a7eb6a9cf9f6f7cd0dd41))
+
 ## [1.5.8](https://github.com/webgrip/n8n-application/compare/1.5.7...1.5.8) (2025-03-27)
 
 
