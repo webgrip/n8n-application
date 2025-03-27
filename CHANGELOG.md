@@ -1,3 +1,10 @@
+## [1.5.10](https://github.com/webgrip/n8n-application/compare/1.5.9...1.5.10) (2025-03-27)
+
+
+### Bug Fixes
+
+* [0] -> (x 0) ([71c2fa4](https://github.com/webgrip/n8n-application/commit/71c2fa47aac6c597d347ecb1043881ed41ac2a3d))
+
 ## [1.5.9](https://github.com/webgrip/n8n-application/compare/1.5.8...1.5.9) (2025-03-27)
 
 
