@@ -1,3 +1,10 @@
+## [1.5.13](https://github.com/webgrip/n8n-application/compare/1.5.12...1.5.13) (2025-03-27)
+
+
+### Bug Fixes
+
+* Use common helper template ([0ba1ee1](https://github.com/webgrip/n8n-application/commit/0ba1ee177de3c2b37cc014af56c566d4054886a9))
+
 ## [1.5.12](https://github.com/webgrip/n8n-application/compare/1.5.11...1.5.12) (2025-03-27)
 
 
