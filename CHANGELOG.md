@@ -1,3 +1,10 @@
+## [1.5.5](https://github.com/webgrip/n8n-application/compare/1.5.4...1.5.5) (2025-03-27)
+
+
+### Bug Fixes
+
+* **postgres:** Enabled metrics, made persistence, port and architecture explicit ([c81d9d0](https://github.com/webgrip/n8n-application/commit/c81d9d07398c6e5ce148f68e5dd06ce33072b388))
+
 ## [1.5.4](https://github.com/webgrip/n8n-application/compare/1.5.3...1.5.4) (2025-03-27)
 
 
