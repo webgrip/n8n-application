@@ -1,3 +1,10 @@
+## [1.5.2](https://github.com/webgrip/n8n-application/compare/1.5.1...1.5.2) (2025-03-27)
+
+
+### Bug Fixes
+
+* Fix postgres values ([91fe861](https://github.com/webgrip/n8n-application/commit/91fe861b253aff51bfba459bbb5ac31138c3d4ca))
+
 ## [1.5.1](https://github.com/webgrip/n8n-application/compare/1.5.0...1.5.1) (2025-03-27)
 
 
