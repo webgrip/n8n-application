@@ -56,12 +56,12 @@ n8n:
         valueFrom:
           secretKeyRef:
             name: n8n-application-secrets
-            key: n8n_encryption_key
+            key: n8n-encryption-key
       DB_POSTGRESDB_PASSWORD:
         valueFrom:
           secretKeyRef:
             name: n8n-application-secrets
-            key: postgres_password
+            key: postgres-password
 
 postgresql:
   auth:
@@ -69,4 +69,4 @@ postgresql:
     database: n8n_db
     existingSecret: n8n-application-secrets
     secretKeys:
-      userPasswordKey: postgres_password
+      userPasswordKey: postgres-password
