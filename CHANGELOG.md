@@ -1,3 +1,10 @@
+## [1.5.3](https://github.com/webgrip/n8n-application/compare/1.5.2...1.5.3) (2025-03-27)
+
+
+### Bug Fixes
+
+* Fix progres host ([78f936b](https://github.com/webgrip/n8n-application/commit/78f936bdbb6c016c80e82f463c526cb47bf6df40))
+
 ## [1.5.2](https://github.com/webgrip/n8n-application/compare/1.5.1...1.5.2) (2025-03-27)
 
 
