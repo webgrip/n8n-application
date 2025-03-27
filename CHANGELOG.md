@@ -1,3 +1,10 @@
+## [1.5.11](https://github.com/webgrip/n8n-application/compare/1.5.10...1.5.11) (2025-03-27)
+
+
+### Bug Fixes
+
+* Set helpers ([223bd7a](https://github.com/webgrip/n8n-application/commit/223bd7aa9203ba2f6dfee9cda4b0cf931a0a5eae))
+
 ## [1.5.10](https://github.com/webgrip/n8n-application/compare/1.5.9...1.5.10) (2025-03-27)
 
 
