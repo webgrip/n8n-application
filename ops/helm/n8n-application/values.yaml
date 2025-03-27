@@ -20,7 +20,7 @@ n8n:
     hosts:
       - host: *hostname
         paths:
-          - path: /
+          - path: "/"
             pathType: Prefix
     tls:
       - secretName: letsencrypt-n8n-application
