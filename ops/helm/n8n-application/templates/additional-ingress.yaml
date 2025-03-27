@@ -7,7 +7,7 @@
 apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
-  name: {{- include "chart.fullname" . }}-bypass
+  name: "{{- include "chart.fullname" . }}-bypass"
   annotations:
     {{- include "chart.commonAnnotations" . | nindent 4 }}
   labels:
