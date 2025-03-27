@@ -23,6 +23,7 @@ jobs:
     uses: webgrip/workflows/.github/workflows/determine-changed-directories.yml@main
     with:
       inside-dir: 'ops/secrets'
+      max-level: 1
 
   deploy-changed-secrets:
     name: "Deploy Changed Secrets"
@@ -61,7 +62,7 @@ jobs:
     if: >
       always()
       && needs.build.result == 'success'
-    uses: webgrip/workflows/.github/workflows/helm-deploy.yml@main
+    uses: webgrip/workflows/.github/workflows/helm-chart-deploy.yml@main
     secrets:
       DIGITAL_OCEAN_API_KEY: ${{ secrets.DIGITAL_OCEAN_API_KEY }}
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}

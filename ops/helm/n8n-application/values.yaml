@@ -3,6 +3,7 @@ namespace: n8n-application
 _shared_config:
   hostname: &hostname n8n.staging.k8s.webgrip.nl
   url: &url https://n8n.staging.k8s.webgrip.nl
+  storageClass: &storageClass "do-block-storage"
 
 n8n:
   enabled: true
@@ -64,9 +65,28 @@ n8n:
             key: postgres-password
 
 postgresql:
+  architecture: standalone
+
+  global:
+    storageClass: *storageClass
+
   auth:
     username: n8n
     database: n8n_db
     existingSecret: n8n-application-secrets
     secretKeys:
       userPasswordKey: postgres-password
+
+  metrics:
+    enabled: true
+
+  primary:
+    service:
+      type: ClusterIP
+      ports:
+        postgresql: 5432
+
+    persistence:
+      enabled: true
+      size: 8Gi
+      storageClass: *storageClass
