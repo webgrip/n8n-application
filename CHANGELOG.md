@@ -1,3 +1,20 @@
+# [1.5.0](https://github.com/webgrip/n8n-application/compare/1.4.4...1.5.0) (2025-03-27)
+
+
+### Bug Fixes
+
+* Added docker secrets to the deploy application job ([678b0c6](https://github.com/webgrip/n8n-application/commit/678b0c66fea3ad4207d917466c2d1f1e6475c929))
+* **docker:** Get rid of helm build deps ([b0cc7d6](https://github.com/webgrip/n8n-application/commit/b0cc7d60ef50feb102ee22fd412cd50c39d1a9a0))
+* **postgresql:** Build my own postgres image that has wal-g installed ([60ad9f6](https://github.com/webgrip/n8n-application/commit/60ad9f6d8fb06a6fe0b52a68cbc2519ba1c86efd))
+
+
+### Features
+
+* Deploy on traefik, added secrets ([b09eaba](https://github.com/webgrip/n8n-application/commit/b09eabac58983dd75fc7cada284c4162f09769cd))
+* Deploy on traefik, added secrets ([2b7bc78](https://github.com/webgrip/n8n-application/commit/2b7bc78589de19bf73ed36d60ec0794176d33ba2))
+* **postgresql:** Added logical and WAL backup ([98a5792](https://github.com/webgrip/n8n-application/commit/98a57924ec23f1162c9dfb84aedb3025e352deec))
+* **postgresql:** Fixed extra configmap ([97629dc](https://github.com/webgrip/n8n-application/commit/97629dcc71576587c22e5c3e53d6056e0723eb15))
+
 ## [1.4.4](https://github.com/webgrip/n8n-application/compare/1.4.3...1.4.4) (2025-03-05)
 
 
