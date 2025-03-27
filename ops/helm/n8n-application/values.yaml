@@ -2,7 +2,7 @@ namespace: n8n-application
 
 _shared_config:
   hostname: &hostname n8n.staging.k8s.webgrip.nl
-  url: &url https://n8n.staging.k8s.webgrip.nl
+  url: &url https://n8n.staging.k8s.webgrip.nl/
 
 n8n:
   enabled: true
