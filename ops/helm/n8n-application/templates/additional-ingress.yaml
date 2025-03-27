@@ -12,6 +12,8 @@ metadata:
     {{- include "chart.commonAnnotations" . | nindent 4 }}
   labels:
     {{- include "chart.labels" . | nindent 4 }}
+    kubernetes.io/ingress.class: "ingress-traefik"
+    traefik.ingress.kubernetes.io/router.middlewares: ""
 spec:
   rules:
     - host: {{ (index .Values.n8n.ingress.hosts 0).host | quote }}
@@ -25,6 +27,13 @@ spec:
                 port:
                   number: 80
           - path: /webhook
+            pathType: Prefix
+            backend:
+              service:
+                name: {{ include "chart.fullname" . }}
+                port:
+                  number: 80
+          - path: /webhook-test
             pathType: Prefix
             backend:
               service:
