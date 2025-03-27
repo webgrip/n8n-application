@@ -29,13 +29,13 @@ jobs:
     needs: [ determine-changed-secrets ]
     if: needs.determine-changed-secrets.outputs.matrix != '[]'
     uses: webgrip/workflows/.github/workflows/helm-charts-deploy.yml@main
-    with:
-      paths: ${{ needs.determine-changed-secrets.outputs.matrix }}
     secrets:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
       DIGITAL_OCEAN_API_KEY: ${{ secrets.DIGITAL_OCEAN_API_KEY }}
       SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+    with:
+      paths: ${{ needs.determine-changed-secrets.outputs.matrix }}
 
   build:
     name: 'Build'
@@ -45,15 +45,15 @@ jobs:
       && needs.release.result == 'success'
       && needs.release.outputs.version != ''
     uses: webgrip/workflows/.github/workflows/docker-build-and-push.yml@main
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
     with:
       docker-context: '.'
       docker-file: './ops/docker/n8n/Dockerfile'
       docker-tags: |
         webgrip/n8n-application:latest
         webgrip/n8n-application:${{ needs.release.outputs.version }}
-    secrets:
-      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
 
   deploy-application:
     name: 'Deploy'
@@ -64,8 +64,9 @@ jobs:
     uses: webgrip/workflows/.github/workflows/helm-deploy.yml@main
     secrets:
       DIGITAL_OCEAN_API_KEY: ${{ secrets.DIGITAL_OCEAN_API_KEY }}
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
     with:
       environment: 'staging'
       path: './ops/helm/n8n-application-nginx'
       tag: ${{ needs.release.outputs.version }}
-
