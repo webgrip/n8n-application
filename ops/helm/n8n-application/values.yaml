@@ -20,7 +20,8 @@ n8n:
     hosts:
       - host: *hostname
         paths:
-          - /
+          - path: /
+            pathType: Prefix
     tls:
       - secretName: letsencrypt-n8n-application
         hosts:
@@ -57,6 +58,11 @@ n8n:
           secretKeyRef:
             name: n8n-application-secrets
             key: n8n-encryption-key
+      DB_POSTGRESDB_PASSWORD:
+        valueFrom:
+          secretKeyRef:
+            name: n8n-application-secrets
+            key: postgres-password
       OPENAI_API_KEY:
         valueFrom:
           secretKeyRef:
@@ -67,11 +73,16 @@ n8n:
           secretKeyRef:
             name: n8n-application-secrets
             key: telegram-api-key
-      DB_POSTGRESDB_PASSWORD:
+      DISCORD_BOT_TOKEN:
         valueFrom:
           secretKeyRef:
             name: n8n-application-secrets
-            key: postgres-password
+            key: discord-bot-token
+      N8N_PUBLIC_API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: n8n-application-secrets
+            key: n8n-public-api-key
 
 postgresql:
   architecture: standalone
