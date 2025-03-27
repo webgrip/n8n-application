@@ -1,3 +1,10 @@
+## [1.5.7](https://github.com/webgrip/n8n-application/compare/1.5.6...1.5.7) (2025-03-27)
+
+
+### Bug Fixes
+
+* **secrets:** Set API keys as env vars ([2e93f09](https://github.com/webgrip/n8n-application/commit/2e93f09390b9eedc9d105f70a59d5565c15d2214))
+
 ## [1.5.6](https://github.com/webgrip/n8n-application/compare/1.5.5...1.5.6) (2025-03-27)
 
 
