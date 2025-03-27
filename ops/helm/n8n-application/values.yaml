@@ -57,6 +57,16 @@ n8n:
           secretKeyRef:
             name: n8n-application-secrets
             key: n8n-encryption-key
+      OPENAI_API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: n8n-application-secrets
+            key: openai-api-key
+      TELEGRAM_API_KEY:
+        valueFrom:
+          secretKeyRef:
+            name: n8n-application-secrets
+            key: telegram-api-key
       DB_POSTGRESDB_PASSWORD:
         valueFrom:
           secretKeyRef:

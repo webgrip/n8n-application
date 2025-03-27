@@ -6,7 +6,7 @@ version: 1.0.1
 appVersion: "1.81.4"
 dependencies:
   - name: n8n
-    version: 1.0.4
+    version: 1.0.5
     repository: oci://8gears.container-registry.com/library
   - name: postgresql
     version: 16.5.6
