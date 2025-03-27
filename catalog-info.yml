@@ -22,8 +22,8 @@ metadata:
       title: Development URL
       icon: dashboard
       type: website
-    - url: https://n8n.webgrip.nl/
-      title: Production URL
+    - url: https://n8n.staging.k8s.webgrip.nl/
+      title: Staging URL
       icon: dashboard
       type: website
     - url: https://github.com/webgrip/n8n-application
@@ -58,8 +58,8 @@ metadata:
       title: Development URL
       icon: dashboard
       type: website
-    - url: https://n8n.webgrip.nl/
-      title: Production URL
+    - url: https://n8n.staging.k8s.webgrip.nl/
+      title: Staging URL
       icon: dashboard
       type: website
     - url: https://github.com/webgrip/n8n-application

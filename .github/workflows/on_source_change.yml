@@ -11,17 +11,39 @@ on:
       - 'ops/**'
       - 'src/**'
       - '.releaserc.json'
-      - '!ops/helm/n8n-application-postgresql/**'
-      - '!ops/docker/postgres/**'
+      - '.github/workflows/on_source_change.yml'
+
 jobs:
   release:
     name: 'Release'
     uses: webgrip/workflows/.github/workflows/semantic-release.yml@main
 
+  determine-changed-secrets:
+    name: "Secrets"
+    uses: webgrip/workflows/.github/workflows/determine-changed-directories.yml@main
+    with:
+      inside-dir: 'ops/secrets'
+
+  deploy-changed-secrets:
+    name: "Deploy Changed Secrets"
+    needs: [ determine-changed-secrets ]
+    if: needs.determine-changed-secrets.outputs.matrix != '[]'
+    uses: webgrip/workflows/.github/workflows/helm-charts-deploy.yml@main
+    with:
+      paths: ${{ needs.determine-changed-secrets.outputs.matrix }}
+    secrets:
+      DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+      DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+      DIGITAL_OCEAN_API_KEY: ${{ secrets.DIGITAL_OCEAN_API_KEY }}
+      SOPS_AGE_KEY: ${{ secrets.SOPS_AGE_KEY }}
+
   build:
     name: 'Build'
     needs: [ release ]
-    if: always() && needs.release.result == 'success' && needs.release.outputs.version != ''
+    if: >
+      always()
+      && needs.release.result == 'success'
+      && needs.release.outputs.version != ''
     uses: webgrip/workflows/.github/workflows/docker-build-and-push.yml@main
     with:
       docker-context: '.'
@@ -33,10 +55,12 @@ jobs:
       DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
 
-  deploy:
+  deploy-application:
     name: 'Deploy'
-    needs: [ release, build ]
-    if: always() && needs.build.result == 'success'
+    needs: [ release, build, deploy-changed-secrets ]
+    if: >
+      always()
+      && needs.build.result == 'success'
     uses: webgrip/workflows/.github/workflows/helm-deploy.yml@main
     secrets:
       DIGITAL_OCEAN_API_KEY: ${{ secrets.DIGITAL_OCEAN_API_KEY }}
@@ -44,5 +68,4 @@ jobs:
       environment: 'staging'
       path: './ops/helm/n8n-application-nginx'
       tag: ${{ needs.release.outputs.version }}
-
 

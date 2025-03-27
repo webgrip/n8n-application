@@ -1,0 +1,9 @@
+dependencies:
+- name: n8n
+  repository: oci://8gears.container-registry.com/library
+  version: 1.0.4
+- name: postgresql
+  repository: https://charts.bitnami.com/bitnami
+  version: 16.5.6
+digest: sha256:fbd61ed66d16283fe1d50a838b26fe1ec8d1a8f144a8b7d052dfc58786280980
+generated: "2025-03-26T16:39:53.995974+01:00"
