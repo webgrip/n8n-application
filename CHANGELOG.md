@@ -1,3 +1,10 @@
+## [1.5.15](https://github.com/webgrip/n8n-application/compare/1.5.14...1.5.15) (2025-03-27)
+
+
+### Bug Fixes
+
+* Quote the prefixed path ([372cfd5](https://github.com/webgrip/n8n-application/commit/372cfd586fbf15286427e5c7be442c137dd32eb6))
+
 ## [1.5.14](https://github.com/webgrip/n8n-application/compare/1.5.13...1.5.14) (2025-03-27)
 
 
