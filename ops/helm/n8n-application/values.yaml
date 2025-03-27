@@ -46,7 +46,7 @@ n8n:
       db:
         type: postgresdb
         postgresdb:
-          host: postgres.n8n-application.svc.cluster.local
+          host: n8n-application-postgresql.n8n-application.svc.cluster.local
           port: 5432
           database: n8n_db
           user: n8n
