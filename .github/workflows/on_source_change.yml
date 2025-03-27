@@ -68,5 +68,5 @@ jobs:
       DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
     with:
       environment: 'staging'
-      path: './ops/helm/n8n-application-nginx'
+      path: './ops/helm/n8n-application'
       tag: ${{ needs.release.outputs.version }}
