@@ -5,5 +5,8 @@ dependencies:
 - name: postgresql
   repository: https://charts.bitnami.com/bitnami
   version: 16.5.6
-digest: sha256:831789b650045d43e446108c79041098cd95a0b35c8c0b43bc4a7920071f8c5b
-generated: "2025-03-27T14:17:09.8435+01:00"
+- name: common-helpers
+  repository: oci://ghcr.io/webgrip/common-charts
+  version: 1.0.13
+digest: sha256:a1985376b07aa175972ec225e760de827ff58fe86e2936451350f15ae75696b6
+generated: "2025-03-27T16:41:16.852128+01:00"
