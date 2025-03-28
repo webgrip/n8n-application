@@ -10,6 +10,7 @@ metadata:
   name: "{{- include "chart.fullname" . }}-bypass"
   annotations:
     {{- include "chart.commonAnnotations" . | nindent 4 }}
+    cert-manager.io/cluster-issuer: letsencrypt-traefik
     traefik.ingress.kubernetes.io/router.middlewares: "ingress-traefik-allow-all@kubernetescrd"
   labels:
     {{- include "chart.labels" . | nindent 4 }}
