@@ -1,3 +1,10 @@
+## [1.5.17](https://github.com/webgrip/n8n-application/compare/1.5.16...1.5.17) (2025-03-28)
+
+
+### Bug Fixes
+
+* set allow all IPs to /api/v1 and /webhook prefixes ([0d6ad0d](https://github.com/webgrip/n8n-application/commit/0d6ad0dea94f8fe2dee92f92d0e27dda47856c53))
+
 ## [1.5.16](https://github.com/webgrip/n8n-application/compare/1.5.15...1.5.16) (2025-03-27)
 
 
