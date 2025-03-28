@@ -1,3 +1,10 @@
+## [1.5.22](https://github.com/webgrip/n8n-application/compare/1.5.21...1.5.22) (2025-03-28)
+
+
+### Bug Fixes
+
+* Remove basic auth for n8n ([bee0fe9](https://github.com/webgrip/n8n-application/commit/bee0fe90eab11e38008ada10cb8ef09e65094d89))
+
 ## [1.5.21](https://github.com/webgrip/n8n-application/compare/1.5.20...1.5.21) (2025-03-28)
 
 
