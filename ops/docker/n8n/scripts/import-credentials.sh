@@ -22,4 +22,4 @@ else
 fi
 
 # Import credentials into n8n
-n8n import:credentials --separate --input=/data/credentials
+N8N_ENCRYPTION_KEY=$N8N_ENCRYPTION_KEY n8n import:credentials --separate --input=/data/credentials
