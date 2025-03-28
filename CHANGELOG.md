@@ -1,3 +1,10 @@
+## [1.5.23](https://github.com/webgrip/n8n-application/compare/1.5.22...1.5.23) (2025-03-28)
+
+
+### Bug Fixes
+
+* Set the encryption key ([3957182](https://github.com/webgrip/n8n-application/commit/3957182e458aa722a9593b799308edf98482280f))
+
 ## [1.5.22](https://github.com/webgrip/n8n-application/compare/1.5.21...1.5.22) (2025-03-28)
 
 
