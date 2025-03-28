@@ -1,3 +1,10 @@
+## [1.5.21](https://github.com/webgrip/n8n-application/compare/1.5.20...1.5.21) (2025-03-28)
+
+
+### Bug Fixes
+
+* Remove additional-ingress.yaml ([16457a2](https://github.com/webgrip/n8n-application/commit/16457a2f8c5b5bb908bb9fb88a1c2ca57f10b5f7))
+
 ## [1.5.20](https://github.com/webgrip/n8n-application/compare/1.5.19...1.5.20) (2025-03-28)
 
 
