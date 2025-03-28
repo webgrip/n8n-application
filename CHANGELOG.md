@@ -1,3 +1,11 @@
+## [1.5.19](https://github.com/webgrip/n8n-application/compare/1.5.18...1.5.19) (2025-03-28)
+
+
+### Bug Fixes
+
+* Added letsencrypt cluster issuer ([8940f9b](https://github.com/webgrip/n8n-application/commit/8940f9bc861afd10ca59f41f43286dd7fa1bca1b))
+* Set URL ([05d5293](https://github.com/webgrip/n8n-application/commit/05d52934186049c0e260e9106ed6c630cc314054))
+
 ## [1.5.18](https://github.com/webgrip/n8n-application/compare/1.5.17...1.5.18) (2025-03-28)
 
 
