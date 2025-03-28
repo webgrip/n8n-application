@@ -1,3 +1,10 @@
+## [1.5.20](https://github.com/webgrip/n8n-application/compare/1.5.19...1.5.20) (2025-03-28)
+
+
+### Bug Fixes
+
+* Set ingress class ([f83bf75](https://github.com/webgrip/n8n-application/commit/f83bf75a423d65fd0328436a36080a8db861cc1c))
+
 ## [1.5.19](https://github.com/webgrip/n8n-application/compare/1.5.18...1.5.19) (2025-03-28)
 
 
