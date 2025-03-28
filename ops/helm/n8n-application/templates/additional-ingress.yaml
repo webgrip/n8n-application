@@ -1,48 +1,42 @@
-{{- /*
-  additional-ingress.yaml
-
-  Creates a second Ingress object that serves specific paths (/api/v1, /webhook)
-  without the default Traefik middlewares.
-*/ -}}
-apiVersion: networking.k8s.io/v1
-kind: Ingress
-metadata:
-  name: "{{- include "chart.fullname" . }}-bypass"
-  annotations:
-    {{- include "chart.commonAnnotations" . | nindent 4 }}
-    cert-manager.io/cluster-issuer: letsencrypt-traefik
-    kubernetes.io/ingress.class: "ingress-traefik"
-    traefik.ingress.kubernetes.io/router.middlewares: "ingress-traefik-allow-all@kubernetescrd"
-  labels:
-    {{- include "chart.labels" . | nindent 4 }}
-    kubernetes.io/ingress.class: "ingress-traefik"
-spec:
-  rules:
-    - host: {{ (index .Values.n8n.ingress.hosts 0).host | quote }}
-      http:
-        paths:
-          - path: /api/v1
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ include "chart.fullname" . }}
-                port:
-                  number: 80
-          - path: /webhook
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ include "chart.fullname" . }}
-                port:
-                  number: 80
-          - path: /webhook-test
-            pathType: Prefix
-            backend:
-              service:
-                name: {{ include "chart.fullname" . }}
-                port:
-                  number: 80
-  tls:
-    - hosts:
-        - {{ (index .Values.n8n.ingress.hosts 0).host | quote }}
-      secretName: {{ (index .Values.n8n.ingress.tls 0).secretName | quote }}
+{{/*apiVersion: networking.k8s.io/v1*/}}
+{{/*kind: Ingress*/}}
+{{/*metadata:*/}}
+{{/*  name: "{{- include "chart.fullname" . }}-bypass"*/}}
+{{/*  annotations:*/}}
+{{/*    {{- include "chart.commonAnnotations" . | nindent 4 }}*/}}
+{{/*    cert-manager.io/cluster-issuer: letsencrypt-traefik*/}}
+{{/*    kubernetes.io/ingress.class: "ingress-traefik"*/}}
+{{/*    traefik.ingress.kubernetes.io/router.middlewares: "ingress-traefik-allow-all@kubernetescrd"*/}}
+{{/*  labels:*/}}
+{{/*    {{- include "chart.labels" . | nindent 4 }}*/}}
+{{/*    kubernetes.io/ingress.class: "ingress-traefik"*/}}
+{{/*spec:*/}}
+{{/*  rules:*/}}
+{{/*    - host: {{ (index .Values.n8n.ingress.hosts 0).host | quote }}*/}}
+{{/*      http:*/}}
+{{/*        paths:*/}}
+{{/*          - path: /api/v1*/}}
+{{/*            pathType: Prefix*/}}
+{{/*            backend:*/}}
+{{/*              service:*/}}
+{{/*                name: {{ include "chart.fullname" . }}*/}}
+{{/*                port:*/}}
+{{/*                  number: 80*/}}
+{{/*          - path: /webhook*/}}
+{{/*            pathType: Prefix*/}}
+{{/*            backend:*/}}
+{{/*              service:*/}}
+{{/*                name: {{ include "chart.fullname" . }}*/}}
+{{/*                port:*/}}
+{{/*                  number: 80*/}}
+{{/*          - path: /webhook-test*/}}
+{{/*            pathType: Prefix*/}}
+{{/*            backend:*/}}
+{{/*              service:*/}}
+{{/*                name: {{ include "chart.fullname" . }}*/}}
+{{/*                port:*/}}
+{{/*                  number: 80*/}}
+{{/*  tls:*/}}
+{{/*    - hosts:*/}}
+{{/*        - {{ (index .Values.n8n.ingress.hosts 0).host | quote }}*/}}
+{{/*      secretName: {{ (index .Values.n8n.ingress.tls 0).secretName | quote }}*/}}
