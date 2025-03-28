@@ -10,10 +10,10 @@ metadata:
   name: "{{- include "chart.fullname" . }}-bypass"
   annotations:
     {{- include "chart.commonAnnotations" . | nindent 4 }}
+    traefik.ingress.kubernetes.io/router.middlewares: "ingress-traefik-allow-all@kubernetescrd"
   labels:
     {{- include "chart.labels" . | nindent 4 }}
     kubernetes.io/ingress.class: "ingress-traefik"
-    traefik.ingress.kubernetes.io/router.middlewares: "ingress-traefik-allow-all@kubernetescrd"
 spec:
   rules:
     - host: {{ (index .Values.n8n.ingress.hosts 0).host | quote }}
