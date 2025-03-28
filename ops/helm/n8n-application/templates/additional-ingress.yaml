@@ -11,6 +11,7 @@ metadata:
   annotations:
     {{- include "chart.commonAnnotations" . | nindent 4 }}
     cert-manager.io/cluster-issuer: letsencrypt-traefik
+    kubernetes.io/ingress.class: "ingress-traefik"
     traefik.ingress.kubernetes.io/router.middlewares: "ingress-traefik-allow-all@kubernetescrd"
   labels:
     {{- include "chart.labels" . | nindent 4 }}
