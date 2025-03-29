@@ -1,3 +1,15 @@
+# [1.6.0](https://github.com/webgrip/n8n-application/compare/1.5.23...1.6.0) (2025-03-29)
+
+
+### Bug Fixes
+
+* Fixed credentials files ([0c081c3](https://github.com/webgrip/n8n-application/commit/0c081c3bd4c4e18b86a80ce8eb78b40de0e92716))
+
+
+### Features
+
+* updated n8n from 1.82.1 to 1.84.3 ([2eaabf3](https://github.com/webgrip/n8n-application/commit/2eaabf3d724ea8fca4cefd9a2eafdc33d9253927))
+
 ## [1.5.23](https://github.com/webgrip/n8n-application/compare/1.5.22...1.5.23) (2025-03-28)
 
 
