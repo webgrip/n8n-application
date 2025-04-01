@@ -34,6 +34,13 @@ if [ -d /opt/custom-certificates ]; then
     fi
 fi
 
+if [ -f "$SCRIPT_DIR/install-community-nodes.sh" ]; then
+    echo "Running install-community-nodes.sh..."
+    sh "$SCRIPT_DIR/install-community-nodes.sh"
+else
+    echo "install-community-nodes.sh not found, skipping..."
+fi
+
 # Start n8n with or without additional arguments
 if [ "$#" -gt 0 ]; then
     echo "Starting n8n with arguments: $@"
