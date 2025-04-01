@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/webgrip/n8n-application/compare/1.8.0...1.8.1) (2025-04-01)
+
+
+### Bug Fixes
+
+* go back minor version ([a339954](https://github.com/webgrip/n8n-application/commit/a339954d1242dacde40661acfc15c1bf0760b515))
+
 # [1.8.0](https://github.com/webgrip/n8n-application/compare/1.7.0...1.8.0) (2025-04-01)
 
 
