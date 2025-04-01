@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/webgrip/n8n-application/compare/1.6.0...1.7.0) (2025-04-01)
+
+
+### Features
+
+* install community nodes and patch version bump ([ff18ff4](https://github.com/webgrip/n8n-application/commit/ff18ff4c586c59cefcb45303f78ce20b77ba2043))
+
 # [1.6.0](https://github.com/webgrip/n8n-application/compare/1.5.23...1.6.0) (2025-03-29)
 
 
