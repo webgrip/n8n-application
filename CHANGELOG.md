@@ -1,3 +1,10 @@
+## [1.8.2](https://github.com/webgrip/n8n-application/compare/1.8.1...1.8.2) (2025-04-01)
+
+
+### Bug Fixes
+
+* Removed the community package environment var ([57c05fb](https://github.com/webgrip/n8n-application/commit/57c05fbbe1d268138f040bf28bd3b9820b21f424))
+
 ## [1.8.1](https://github.com/webgrip/n8n-application/compare/1.8.0...1.8.1) (2025-04-01)
 
 
