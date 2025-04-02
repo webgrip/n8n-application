@@ -1,3 +1,10 @@
+## [1.8.3](https://github.com/webgrip/n8n-application/compare/1.8.2...1.8.3) (2025-04-02)
+
+
+### Bug Fixes
+
+* Don't install community packages anymore ([83a6911](https://github.com/webgrip/n8n-application/commit/83a6911e28a7417c14a6e200213eeb7ebbd84cfd))
+
 ## [1.8.2](https://github.com/webgrip/n8n-application/compare/1.8.1...1.8.2) (2025-04-01)
 
 
