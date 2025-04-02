@@ -27,6 +27,10 @@ n8n:
           - *hostname
 
   main:
+    persistence:
+      enabled: true
+      storageClass: do-block-storage
+      size: 10Gi
     config:
       webhook_url: *url
       generic_timezone: Europe/Amsterdam
@@ -43,6 +47,7 @@ n8n:
         enforce_settings_file_permissions: true
         templates_enabled: true
         hiring_banner_enabled: false
+        community_packages_allow_tool_usage: true
 
       db:
         type: postgresdb
