@@ -1,3 +1,10 @@
+## [1.8.4](https://github.com/webgrip/n8n-application/compare/1.8.3...1.8.4) (2025-04-02)
+
+
+### Bug Fixes
+
+* Install only mcp ([83f0602](https://github.com/webgrip/n8n-application/commit/83f0602d663892652e11652ab183c96f1b77e4d5))
+
 ## [1.8.3](https://github.com/webgrip/n8n-application/compare/1.8.2...1.8.3) (2025-04-02)
 
 
