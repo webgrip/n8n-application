@@ -1,3 +1,10 @@
+## [1.8.7](https://github.com/webgrip/n8n-application/compare/1.8.6...1.8.7) (2025-04-02)
+
+
+### Bug Fixes
+
+* Enable persistence and put the env var back in, also removed old postgres charts ([7189367](https://github.com/webgrip/n8n-application/commit/71893675c98b8cb65ccb3096c6f05e9539589230))
+
 ## [1.8.6](https://github.com/webgrip/n8n-application/compare/1.8.5...1.8.6) (2025-04-02)
 
 
