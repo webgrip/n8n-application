@@ -1,3 +1,10 @@
+## [1.8.5](https://github.com/webgrip/n8n-application/compare/1.8.4...1.8.5) (2025-04-02)
+
+
+### Bug Fixes
+
+* Install only discord trigger ([8f7a4cc](https://github.com/webgrip/n8n-application/commit/8f7a4ccdc0c4bb4a0d83451964af1938e188a2ad))
+
 ## [1.8.4](https://github.com/webgrip/n8n-application/compare/1.8.3...1.8.4) (2025-04-02)
 
 
