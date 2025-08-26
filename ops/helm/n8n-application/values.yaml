@@ -37,8 +37,8 @@ n8n:
   main:
     persistence:
       enabled: true
+      type: dynamic
       storageClass: do-block-storage
-      existingClaim: pvc-51bbe2f0-83c0-41ef-8790-be318d267730
       size: 10Gi
     config:
       webhook_url: *url
