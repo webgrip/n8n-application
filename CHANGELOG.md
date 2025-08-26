@@ -1,3 +1,10 @@
+## [1.9.3](https://github.com/webgrip/n8n-application/compare/1.9.2...1.9.3) (2025-08-26)
+
+
+### Bug Fixes
+
+* made pvc dynamic ([c6adc59](https://github.com/webgrip/n8n-application/commit/c6adc590ce3f32540b69b8c5823141c05f302dc9))
+
 ## [1.9.2](https://github.com/webgrip/n8n-application/compare/1.9.1...1.9.2) (2025-08-26)
 
 
