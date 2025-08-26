@@ -1,3 +1,15 @@
+# [1.9.0](https://github.com/webgrip/n8n-application/compare/1.8.7...1.9.0) (2025-08-26)
+
+
+### Bug Fixes
+
+* webgrip docker network ([0cb79b2](https://github.com/webgrip/n8n-application/commit/0cb79b229c5b3386fc0a5b23d9c33fc759496b4b))
+
+
+### Features
+
+* added resource limits ([0c28b23](https://github.com/webgrip/n8n-application/commit/0c28b2325951bd1254ce75b84d763d5b97228c0c))
+
 ## [1.8.7](https://github.com/webgrip/n8n-application/compare/1.8.6...1.8.7) (2025-04-02)
 
 
