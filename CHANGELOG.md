@@ -1,3 +1,10 @@
+## [1.9.1](https://github.com/webgrip/n8n-application/compare/1.9.0...1.9.1) (2025-08-26)
+
+
+### Bug Fixes
+
+* added volumename ([0ea2b97](https://github.com/webgrip/n8n-application/commit/0ea2b97234565f9fa406b5732d082144d7bc9295))
+
 # [1.9.0](https://github.com/webgrip/n8n-application/compare/1.8.7...1.9.0) (2025-08-26)
 
 
