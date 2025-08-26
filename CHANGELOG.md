@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/webgrip/n8n-application/compare/1.9.1...1.9.2) (2025-08-26)
+
+
+### Bug Fixes
+
+* existingclaim? ([13f3a9b](https://github.com/webgrip/n8n-application/commit/13f3a9bda177d3fe85cedf51a16ebfc625914060))
+
 ## [1.9.1](https://github.com/webgrip/n8n-application/compare/1.9.0...1.9.1) (2025-08-26)
 
 
