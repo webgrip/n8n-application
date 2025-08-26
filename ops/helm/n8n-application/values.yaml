@@ -11,12 +11,20 @@ n8n:
     tag: latest
     pullPolicy: Always
 
+  resources:
+    limits:
+      cpu: 500m
+      memory: 512Mi
+    requests:
+      cpu: 250m
+      memory: 256Mi
+
   ingress:
     enabled: true
     className: ingress-traefik
     annotations:
       cert-manager.io/cluster-issuer: letsencrypt-traefik
-#      traefik.ingress.kubernetes.io/router.middlewares: "ingress-traefik-ryan-basic-auth@kubernetescrd"
+    #      traefik.ingress.kubernetes.io/router.middlewares: "ingress-traefik-ryan-basic-auth@kubernetescrd"
     hosts:
       - host: *hostname
         paths:
@@ -107,4 +115,3 @@ postgresql:
       type: ClusterIP
       ports:
         postgresql: 5432
-
