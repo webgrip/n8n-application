@@ -1,0 +1,110 @@
+services:
+  application-application.application:
+    container_name: application-application.application
+    image: webgrip/application-application:latest
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: ops/docker/application/Dockerfile
+    restart: always
+    depends_on:
+      application-application.mariadb:
+        condition: service_healthy
+      application-application.redis:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:9000:9000"
+    env_file: ./.env
+    environment:
+      DB_TYPE: ${DB_CONNECTION:-}
+      DB_STRICT: "false"
+      LOG_CHANNEL: stack
+      REQUIRE_HTTPS: "false"
+    volumes:
+      - ./.env:/var/www/app/.env
+      - application-application-application-public-data:/var/www/app/public
+      - application-application-application-storage-data:/var/www/app/storage
+
+  application-application.nginx:
+    container_name: application-application.nginx
+    image: webgrip/application-application-nginx:latest
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: ops/docker/nginx/Dockerfile
+    restart: always
+    depends_on:
+      - application-application.application
+    ports:
+      - "127.0.0.1:8080:80"
+    volumes:
+      - application-application-application-public-data:/var/www/app/public:ro
+
+  application-application.mariadb:
+    container_name: application-application.mariadb
+    image: webgrip/application-application-mariadb:latest
+    build:
+      context: .
+      dockerfile: ops/docker/mariadb/Dockerfile
+    pull_policy: never
+    restart: unless-stopped
+    ports:
+      - "127.0.0.1:3306:3306"
+    logging:
+      options:
+        max-size: 10m
+    env_file:
+      - ./.env
+    environment:
+      MARIADB_DATABASE: ${DB_DATABASE:-application}
+      MARIADB_USER: ${DB_USERNAME:-application}
+      MARIADB_PASSWORD: ${DB_PASSWORD:-application}
+      MARIADB_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root}
+      MARIADB_CHARACTER_SET_SERVER: utf8mb4
+      MARIADB_COLLATION_SERVER: utf8mb4_unicode_ci
+    volumes:
+      - application-application-mariadb-data:/var/lib/mysql
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mariadb",
+          "--user=${DB_USERNAME:-application}",
+          "--password=${DB_PASSWORD:-application}",
+          "--execute=SELECT 1",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 30s
+
+  application-application.redis:
+    container_name: application-application.redis
+    image: webgrip/application-application-redis:latest
+    pull_policy: never
+    build:
+      context: .
+      dockerfile: ops/docker/redis/Dockerfile
+    restart: always
+    volumes:
+      - application-application-redis-data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+      start_period: 5s
+
+volumes:
+  application-application-application-storage-data:
+  application-application-application-public-data:
+
+  application-application-mariadb-data:
+  application-application-redis-data:
+  certificate-data:
+    external: true
+
+networks:
+  default:
+    external: true
+    name: webgrip
