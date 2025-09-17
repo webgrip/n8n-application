@@ -8,6 +8,7 @@ permissions: write-all
 
 env:
   GITHUB_AW_REQUIRED_ROLES: admin,maintain,none
+  # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 network: defaults
 
@@ -20,8 +21,8 @@ tools:
   web-fetch:
   web-search:
 
-engine:
-  id: codex
+# engine:
+#   id: codex
 
 if:
   github.event.action == 'opened' ||
