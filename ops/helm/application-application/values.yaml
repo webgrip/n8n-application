@@ -1,8 +1,8 @@
-namespace: application-application
+namespace: n8n-application
 
 _shared_config:
-  hostname: &hostname application-application.staging.k8s.webgrip.nl
-  url: &url https://application-application.staging.k8s.webgrip.nl
+  hostname: &hostname n8n-application.staging.k8s.webgrip.nl
+  url: &url https://n8n-application.staging.k8s.webgrip.nl
 
 application:
   enabled: true
@@ -19,7 +19,7 @@ application:
       containers:
         app:
           image:
-            repository: docker.io/webgrip/application-application
+            repository: docker.io/webgrip/n8n-application
             tag: "latest"
             pullPolicy: Always
           # securityContext:
@@ -44,8 +44,8 @@ application:
                     - -lc
                     - >
                       php -v >/dev/null && \
-                      nc -z application-application-mariadb 3306 && \
-                      nc -z application-application-redis-master 6379 && \
+                      nc -z n8n-application-mariadb 3306 && \
+                      nc -z n8n-application-redis-master 6379 && \
                       nc -z 127.0.0.1 4200
                 initialDelaySeconds: 10
                 periodSeconds: 10
@@ -59,13 +59,13 @@ application:
                     - -lc
                     - >
                       php -v >/dev/null && \
-                      nc -z application-application-mariadb 3306 && \
-                      nc -z application-application-redis-master 6379 && \
+                      nc -z n8n-application-mariadb 3306 && \
+                      nc -z n8n-application-redis-master 6379 && \
                       nc -z 127.0.0.1 4200
           env:
             # App
             - name: APP_NAME
-              value: application-application
+              value: n8n-application
             - name: APP_ENV
               value: production
             - name: APP_DEBUG
@@ -81,7 +81,7 @@ application:
             - name: APP_KEY
               valueFrom:
                 secretKeyRef:
-                  name: application-application-secrets
+                  name: n8n-application-secrets
                   key: app-key
 
             - name: DB_STRICT
@@ -99,17 +99,17 @@ application:
             - name: DB_CONNECTION
               value: mysql
             - name: DB_HOST
-              value: application-application-mariadb.application-application.svc.cluster.local
+              value: n8n-application-mariadb.n8n-application.svc.cluster.local
             - name: DB_PORT
               value: "3306"
             - name: DB_DATABASE
-              value: application-application
+              value: n8n-application
             - name: DB_USERNAME
-              value: application-application
+              value: n8n-application
             - name: DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: application-application-secrets
+                  name: n8n-application-secrets
                   key: mariadb-password
 
             - name: SESSION_DRIVER
@@ -121,26 +121,26 @@ application:
             - name: REDIS_CLIENT
               value: phpredis
             - name: REDIS_PREFIX
-              value: application-application_
+              value: n8n-application_
             - name: REDIS_HOST
-              value: application-application-redis-master.application-application.svc.cluster.local
+              value: n8n-application-redis-master.n8n-application.svc.cluster.local
             - name: REDIS_PORT
               value: "6379"
             - name: REDIS_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: application-application-secrets
+                  name: n8n-application-secrets
                   key: redis-password
 
             - name: API_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: application-application-secrets
+                  name: n8n-application-secrets
                   key: api-secret
             - name: UPDATE_SECRET
               valueFrom:
                 secretKeyRef:
-                  name: application-application-secrets
+                  name: n8n-application-secrets
                   key: update-secret
 
         web:
@@ -206,7 +206,7 @@ application:
                 identifier: main
                 port: http
       tls:
-        - secretName: letsencrypt-application-application
+        - secretName: letsencrypt-n8n-application
           hosts:
             - *hostname
 
@@ -227,7 +227,7 @@ redis:
   architecture: standalone
   auth:
     enabled: true
-    existingSecret: application-application-secrets
+    existingSecret: n8n-application-secrets
     existingSecretPasswordKey: redis-password
   master:
     persistence:
@@ -250,9 +250,9 @@ mariadb:
     pullPolicy: IfNotPresent
   architecture: standalone
   auth:
-    existingSecret: application-application-secrets
-    database: application-application
-    username: application-application
+    existingSecret: n8n-application-secrets
+    database: n8n-application
+    username: n8n-application
   primary:
     persistence:
       enabled: true

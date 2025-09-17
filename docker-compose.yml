@@ -1,16 +1,16 @@
 services:
-  application-application.application:
-    container_name: application-application.application
-    image: webgrip/application-application:latest
+  n8n-application.application:
+    container_name: n8n-application.application
+    image: webgrip/n8n-application:latest
     pull_policy: never
     build:
       context: .
       dockerfile: ops/docker/application/Dockerfile
     restart: always
     depends_on:
-      application-application.mariadb:
+      n8n-application.mariadb:
         condition: service_healthy
-      application-application.redis:
+      n8n-application.redis:
         condition: service_healthy
     ports:
       - "127.0.0.1:9000:9000"
@@ -22,27 +22,27 @@ services:
       REQUIRE_HTTPS: "false"
     volumes:
       - ./.env:/var/www/app/.env
-      - application-application-application-public-data:/var/www/app/public
-      - application-application-application-storage-data:/var/www/app/storage
+      - n8n-application-application-public-data:/var/www/app/public
+      - n8n-application-application-storage-data:/var/www/app/storage
 
-  application-application.nginx:
-    container_name: application-application.nginx
-    image: webgrip/application-application-nginx:latest
+  n8n-application.nginx:
+    container_name: n8n-application.nginx
+    image: webgrip/n8n-application-nginx:latest
     pull_policy: never
     build:
       context: .
       dockerfile: ops/docker/nginx/Dockerfile
     restart: always
     depends_on:
-      - application-application.application
+      - n8n-application.application
     ports:
       - "127.0.0.1:8080:80"
     volumes:
-      - application-application-application-public-data:/var/www/app/public:ro
+      - n8n-application-application-public-data:/var/www/app/public:ro
 
-  application-application.mariadb:
-    container_name: application-application.mariadb
-    image: webgrip/application-application-mariadb:latest
+  n8n-application.mariadb:
+    container_name: n8n-application.mariadb
+    image: webgrip/n8n-application-mariadb:latest
     build:
       context: .
       dockerfile: ops/docker/mariadb/Dockerfile
@@ -63,7 +63,7 @@ services:
       MARIADB_CHARACTER_SET_SERVER: utf8mb4
       MARIADB_COLLATION_SERVER: utf8mb4_unicode_ci
     volumes:
-      - application-application-mariadb-data:/var/lib/mysql
+      - n8n-application-mariadb-data:/var/lib/mysql
     healthcheck:
       test:
         [
@@ -78,16 +78,16 @@ services:
       retries: 10
       start_period: 30s
 
-  application-application.redis:
-    container_name: application-application.redis
-    image: webgrip/application-application-redis:latest
+  n8n-application.redis:
+    container_name: n8n-application.redis
+    image: webgrip/n8n-application-redis:latest
     pull_policy: never
     build:
       context: .
       dockerfile: ops/docker/redis/Dockerfile
     restart: always
     volumes:
-      - application-application-redis-data:/data
+      - n8n-application-redis-data:/data
     healthcheck:
       test: ["CMD", "redis-cli", "ping"]
       interval: 30s
@@ -96,11 +96,11 @@ services:
       start_period: 5s
 
 volumes:
-  application-application-application-storage-data:
-  application-application-application-public-data:
+  n8n-application-application-storage-data:
+  n8n-application-application-public-data:
 
-  application-application-mariadb-data:
-  application-application-redis-data:
+  n8n-application-mariadb-data:
+  n8n-application-redis-data:
   certificate-data:
     external: true
 
