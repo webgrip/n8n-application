@@ -1,5 +1,5 @@
-site_name: "n8n-application TechDocs"
-site_description: ""
+site_name: "n8n Application TechDocs"
+site_description: "Documentation for operating and evolving the n8n workflow automation application in this repository."
 
 theme:
   name: "material"
@@ -28,21 +28,28 @@ extra_javascript:
 
 nav:
   - Home: index.md
-  - Template Sync: template-sync.md
+  - Architecture: architecture.md
+  - Operations: operations.md
+  - Development: development.md
+  - Security: security.md
+  - Dependencies: dependencies.md
+  - Integrations: integrations.md
+  - Changelog: changelog.md
+  - API:
+    - Overview: api/index.md
 
 # https://www.mkdocs.org/user-guide/configuration
 plugins:
   - techdocs-core:
       use_material_search: true
   - search:
-      min-search-length: 2
+      min_search_length: 2
       prebuild_index: true
       indexing: full
   - mermaid2:
       arguments:
         securityLevel: "loose"
   - macros
-  - privacy
 
 markdown_extensions:
   - markdown_inline_mermaid
