@@ -10,7 +10,7 @@ roles: [admin, maintainer, write]
 
 env:
   # GITHUB_AW_REQUIRED_ROLES: admin,maintain,none
-  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY_CI }}
 
 network: defaults
 
@@ -26,8 +26,6 @@ tools:
 engine:
   id: codex
   model: gpt-5-preview
-  env:
-    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 if:
   github.event.action == 'opened' ||
