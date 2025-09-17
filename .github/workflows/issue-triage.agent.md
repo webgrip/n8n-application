@@ -22,7 +22,7 @@ tools:
 
 engine:
   id: codex
-  model: gpt-5-preview
+  model: gpt-5
   env:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY_CI }}
 
