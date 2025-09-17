@@ -8,9 +8,9 @@ permissions: write-all
 
 roles: [admin, maintainer, write]
 
-# env:
+env:
   # GITHUB_AW_REQUIRED_ROLES: admin,maintain,none
-  # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 network: defaults
 

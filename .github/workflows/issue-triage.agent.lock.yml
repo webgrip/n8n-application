@@ -17,6 +17,9 @@ concurrency:
 
 run-name: "Agentic Triage"
 
+env:
+  OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+
 jobs:
   task:
     if: >
