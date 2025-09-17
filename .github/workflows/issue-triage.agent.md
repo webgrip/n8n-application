@@ -25,6 +25,7 @@ tools:
 
 engine:
   id: codex
+  model: gpt-5-preview
 
 if:
   github.event.action == 'opened' ||

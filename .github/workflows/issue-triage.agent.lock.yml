@@ -524,7 +524,7 @@ jobs:
             const awInfo = {
               engine_id: "codex",
               engine_name: "Codex",
-              model: "",
+              model: "gpt-5-preview",
               version: "",
               workflow_name: "Agentic Triage",
               experimental: true,
@@ -565,7 +565,7 @@ jobs:
           
           # Run codex with log capture - pipefail ensures codex exit code is preserved
           codex exec \
-            -c model=o4-mini \
+            -c model=gpt-5-preview \
             --full-auto "$INSTRUCTION" 2>&1 | tee /tmp/agentic-triage.log
         env:
           GITHUB_AW_PROMPT: /tmp/aw-prompts/prompt.txt
