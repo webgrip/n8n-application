@@ -26,6 +26,8 @@ tools:
 engine:
   id: codex
   model: gpt-5-preview
+  env:
+    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
 
 if:
   github.event.action == 'opened' ||
