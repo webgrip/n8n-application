@@ -23,8 +23,8 @@ tools:
   web-fetch:
   web-search:
 
-# engine:
-#   id: codex
+engine:
+  id: codex
 
 if:
   github.event.action == 'opened' ||
