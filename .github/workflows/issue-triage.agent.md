@@ -20,6 +20,9 @@ tools:
   web-fetch:
   web-search:
 
+engine:
+  id: codex
+
 if:
   github.event.action == 'opened' ||
   github.event.action == 'reopened' ||
