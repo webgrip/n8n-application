@@ -14,7 +14,7 @@ permissions: {}
 
 concurrency:
   cancel-in-progress: true
-  group: dor-dod-guardian-${{ github.event.issue.number }}
+  group: issue-triage-${{ github.event.issue.number }}
 
 run-name: "[Agent] Issue Triage"
 

@@ -13,7 +13,7 @@ runs-on: arc-runner-set
 timeout_minutes: 10
 
 concurrency: 
-  group: "dor-dod-guardian-${{ github.event.issue.number }}"
+  group: "issue-triage-${{ github.event.issue.number }}"
   cancel-in-progress: true
 
 if: 
