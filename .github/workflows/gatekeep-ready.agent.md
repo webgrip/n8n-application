@@ -19,14 +19,14 @@ concurrency:
 if: 
   github.event.action == 'labeled' && github.event.label.name == 'needs:evaluation'
 
-steps:
-  - name: Remove the trigger label from the issue
-    uses: actions-ecosystem/action-remove-labels@v1
-    with:
-      labels: needs:evaluation
-      number: ${{ github.event.issue.number }}
-      repo: ${{ github.event.repository.name }}
-      fail_on_error: true
+# steps:
+#   - name: Remove the trigger label from the issue
+#     uses: actions-ecosystem/action-remove-labels@v1
+#     with:
+#       labels: needs:evaluation
+#       number: ${{ github.event.issue.number }}
+#       repo: ${{ github.event.repository.name }}
+#       fail_on_error: true
 
 
 engine:

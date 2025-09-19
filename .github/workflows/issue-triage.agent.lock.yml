@@ -316,13 +316,8 @@ jobs:
     outputs:
       output: ${{ steps.collect_output.outputs.output }}
     steps:
-      - name: Remove the trigger label from the issue
-        uses: actions-ecosystem/action-remove-labels@v1
-        with:
-          fail_on_error: true
-          labels: needs:triage
-          number: ${{ github.event.issue.number }}
-          repo: ${{ github.event.repository.name }}
+      - name: Checkout repository
+        uses: actions/checkout@v5
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
