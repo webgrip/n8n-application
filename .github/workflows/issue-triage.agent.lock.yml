@@ -13,9 +13,10 @@ name: "Agentic Triage"
 permissions: {}
 
 concurrency:
-  group: "gh-aw-${{ github.workflow }}-${{ github.event.issue.number }}"
+  cancel-in-progress: true
+  group: dor-dod-guardian-${{ github.event.issue.number }}
 
-run-name: "Agentic Triage"
+run-name: "[Agent] Issue Triage"
 
 jobs:
   task:
@@ -310,13 +311,18 @@ jobs:
     if: >
       github.event.action == 'opened' || github.event.action == 'reopened' || (github.event.action == 'labeled' &&
       github.event.label.name == 'needs:triage')
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     permissions: write-all
     outputs:
       output: ${{ steps.collect_output.outputs.output }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
+      - name: Remove the trigger label from the issue
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          fail_on_error: true
+          labels: needs:triage
+          number: ${{ github.event.issue.number }}
+          repo: ${{ github.event.repository.name }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
@@ -2644,7 +2650,7 @@ jobs:
         env:
           GITHUB_AW_AGENT_OUTPUT: ${{ needs.agentic-triage.outputs.output }}
           GITHUB_AW_LABELS_ALLOWED: ""
-          GITHUB_AW_LABELS_MAX_COUNT: 5
+          GITHUB_AW_LABELS_MAX_COUNT: 3
         with:
           script: |
             async function main() {

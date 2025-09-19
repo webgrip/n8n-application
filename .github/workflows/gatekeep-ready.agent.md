@@ -1,34 +1,72 @@
 ---
+run-name: "[Agent] DoR/DoD Guardian"
+
 on:
   issues:
     types: [labeled]
   reaction: eyes
 
+permissions: write-all
+
+runs-on: arc-runner-set
+
+timeout_minutes: 10
+
+concurrency: 
+  group: "dor-dod-guardian-${{ github.event.issue.number }}"
+  cancel-in-progress: true
+
 if: 
   github.event.action == 'labeled' && github.event.label.name == 'needs:evaluation'
 
-permissions: write-all
+steps:
+  - name: Remove the trigger label from the issue
+    uses: actions-ecosystem/action-remove-labels@v1
+    with:
+      labels: needs:evaluation
+      number: ${{ github.event.issue.number }}
+      repo: ${{ github.event.repository.name }}
+      fail_on_error: true
 
-roles: [admin, maintainer, write]
-
-
-network: defaults
-
-safe-outputs:
-  add-labels:
-  add-comment:
-
-tools:
-  web-fetch:
-  web-search:
 
 engine:
   id: codex
   model: gpt-5
   env:
     OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY_CI }}
+  # config:
+  #   [history]
+  #   persistence = "none"
 
-timeout_minutes: 10
+  #   # [mcp_servers.github]
+  #   # user_agent = "workflow-name"
+  #   # command = "docker"
+
+  #   # Custom configuration
+  #   [custom_section]
+  #   key1 = "value1"
+  #   key2 = "value2"
+
+  #   [server_settings]
+  #   timeout = 60
+  #   retries = 3
+
+  #   [logging]
+  #   level = "debug"
+  #   file = "/tmp/custom.log"
+
+roles: [admin, maintainer, write]
+
+safe-outputs:
+  add-labels:
+  add-comment:
+
+network: defaults
+
+tools:
+  web-fetch:
+  web-search:
+
 ---
 
 # DoR/DoD Guardian for GitHub and DevOps

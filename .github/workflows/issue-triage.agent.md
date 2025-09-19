@@ -1,4 +1,6 @@
 ---
+run-name: "[Agent] Issue Triage"
+
 on:
   issues:
     types: [opened, reopened, labeled]
@@ -6,32 +8,66 @@ on:
 
 permissions: write-all
 
-roles: [admin, maintainer, write]
+runs-on: arc-runner-set
 
+timeout_minutes: 10
 
-network: defaults
-
-safe-outputs:
-  add-labels:
-    max: 5
-  add-comment:
-
-tools:
-  web-fetch:
-  web-search:
-
-engine:
-  id: codex
-  model: gpt-5
-  env:
-    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY_CI }}
+concurrency: 
+  group: "dor-dod-guardian-${{ github.event.issue.number }}"
+  cancel-in-progress: true
 
 if: 
   github.event.action == 'opened' ||
   github.event.action == 'reopened' ||
   (github.event.action == 'labeled' && github.event.label.name == 'needs:triage')
 
-timeout_minutes: 10
+steps:
+  - name: Remove the trigger label from the issue
+    uses: actions-ecosystem/action-remove-labels@v1
+    with:
+      labels: needs:triage
+      number: ${{ github.event.issue.number }}
+      repo: ${{ github.event.repository.name }}
+      fail_on_error: true
+
+
+engine:
+  id: codex
+  model: gpt-5
+  env:
+    OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY_CI }}
+  # config:
+  #   [history]
+  #   persistence = "none"
+
+  #   # [mcp_servers.github]
+  #   # user_agent = "workflow-name"
+  #   # command = "docker"
+
+  #   # Custom configuration
+  #   [custom_section]
+  #   key1 = "value1"
+  #   key2 = "value2"
+
+  #   [server_settings]
+  #   timeout = 60
+  #   retries = 3
+
+  #   [logging]
+  #   level = "debug"
+  #   file = "/tmp/custom.log"
+
+roles: [admin, maintainer, write]
+
+safe-outputs:
+  add-labels:
+  add-comment:
+
+network: defaults
+
+tools:
+  web-fetch:
+  web-search:
 ---
 
 # Agentic Triage

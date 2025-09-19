@@ -11,9 +11,10 @@ name: "DoR/DoD Guardian for GitHub and DevOps"
 permissions: {}
 
 concurrency:
-  group: "gh-aw-${{ github.workflow }}-${{ github.event.issue.number }}"
+  cancel-in-progress: true
+  group: dor-dod-guardian-${{ github.event.issue.number }}
 
-run-name: "DoR/DoD Guardian for GitHub and DevOps"
+run-name: "[Agent] DoR/DoD Guardian"
 
 jobs:
   task:
@@ -304,13 +305,18 @@ jobs:
   dor-dod-guardian-for-github-and-devops:
     needs: task
     if: github.event.action == 'labeled' && github.event.label.name == 'needs:evaluation'
-    runs-on: ubuntu-latest
+    runs-on: arc-runner-set
     permissions: write-all
     outputs:
       output: ${{ steps.collect_output.outputs.output }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v5
+      - name: Remove the trigger label from the issue
+        uses: actions-ecosystem/action-remove-labels@v1
+        with:
+          fail_on_error: true
+          labels: needs:evaluation
+          number: ${{ github.event.issue.number }}
+          repo: ${{ github.event.repository.name }}
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
