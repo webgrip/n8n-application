@@ -4,7 +4,7 @@ on:
     types: [labeled]
   reaction: eyes
 
-if: >
+if: 
   github.event.action == 'labeled' && github.event.label.name == 'check-ready'
 
 permissions: write-all
